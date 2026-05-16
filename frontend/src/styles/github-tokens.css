@@ -1,0 +1,103 @@
+:root {
+  /* Light theme (defaults) */
+  /* Backgrounds */
+  --color-canvas-default: #ffffff;
+  --color-canvas-subtle: #f6f8fa;
+  --color-canvas-inset: #f0f3f5;
+
+  /* Borders */
+  --color-border-default: #e1e4e8;
+  --color-border-muted: #eef1f4;
+
+  /* Text */
+  --color-fg-default: #24292f;
+  --color-fg-muted: #57606a;
+  --color-fg-subtle: #6a737d;
+  --color-fg-on-emphasis: #ffffff;
+
+  /* Accents */
+  --color-accent-fg: #0366d6;
+  --color-accent-emphasis: #0969da;
+  --color-success-fg: #22863a;
+  --color-success-emphasis: #2ea043;
+  --color-danger-fg: #d73a49;
+  --color-danger-emphasis: #cb2431;
+  --color-attention-fg: #d29922;
+  --color-done-fg: #a371f7;
+  --color-sponsors-fg: #db61a2;
+
+  /* Components */
+  --color-btn-bg: #f6f8fa;
+  --color-btn-border: #e1e4e8;
+  --color-btn-hover-bg: #f3f4f6;
+  --color-btn-primary-bg: var(--color-accent-emphasis);
+  --color-btn-primary-hover-bg: var(--color-accent-fg);
+
+  /* Radius & Spacing */
+  --border-radius-sm: 6px;
+  --border-radius-md: 8px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+
+  /* Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+
+  /* Compatibility aliases */
+  --bg-color: var(--color-canvas-default);
+  --text-primary: var(--color-fg-default);
+  --text-secondary: var(--color-fg-muted);
+  --card-bg: var(--color-canvas-subtle);
+  --card-border: var(--color-border-default);
+  --primary: var(--color-accent-emphasis);
+  --primary-hover: var(--color-accent-fg);
+  --success: var(--color-success-fg);
+  --warning: var(--color-attention-fg);
+  --danger: var(--color-danger-fg);
+}
+
+.dark {
+  /* Dark theme (applied when `body.dark` is present) */
+  /* Backgrounds */
+  --color-canvas-default: #0d1117;
+  --color-canvas-subtle: #161b22;
+  --color-canvas-inset: #010409;
+
+  /* Borders */
+  --color-border-default: #30363d;
+  --color-border-muted: #21262d;
+
+  /* Text */
+  --color-fg-default: #e6edf3;
+  --color-fg-muted: #7d8590;
+  --color-fg-subtle: #6e7681;
+  --color-fg-on-emphasis: #ffffff;
+
+  /* Accents */
+  --color-accent-fg: #58a6ff;
+  --color-accent-emphasis: #1f6feb;
+  --color-success-fg: #3fb950;
+  --color-success-emphasis: #238636;
+  --color-danger-fg: #f85149;
+  --color-danger-emphasis: #da3633;
+  --color-attention-fg: #d29922;
+  --color-done-fg: #a371f7;
+  --color-sponsors-fg: #db61a2;
+
+  /* Components */
+  --color-btn-bg: #21262d;
+  --color-btn-border: #30363d;
+  --color-btn-hover-bg: #30363d;
+  --color-btn-primary-bg: var(--color-accent-emphasis);
+  --color-btn-primary-hover-bg: var(--color-accent-fg);
+}
