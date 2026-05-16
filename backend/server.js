@@ -21,14 +21,14 @@ const { Project, ProjectMembers } = require('./models/Project');
 const { auth } = require('./middleware/auth');
 const { apiLimiter, authLimiter } = require('./middleware/rateLimiter');
 const logger = require('./utils/logger');
+const config = require('./config');
 
 const app = express();
 app.set('trust proxy', 1); // Trust Railway's reverse proxy
 const server = http.createServer(app);
-const FRONTEND_URL = process.env.FRONTEND_URL || '*';
 const io = new Server(server, {
   cors: {
-    origin: FRONTEND_URL,
+    origin: config.frontendUrl,
     methods: ['GET', 'POST', 'PUT', 'DELETE']
   }
 });
@@ -41,7 +41,7 @@ io.on('connection', (socket) => {
 
 // ── Security Middleware ──────────────────────────────────
 app.use(helmet());
-app.use(cors({ origin: FRONTEND_URL }));
+app.use(cors({ origin: config.frontendUrl }));
 app.use(express.json({ limit: '10mb' }));
 app.use(apiLimiter);
 app.use(compression({ threshold: 1024 }));
@@ -127,7 +127,7 @@ app.use((req, res) => {
 });
 
 // ── Start Server ─────────────────────────────────────────
-const PORT = process.env.PORT || 5000;
+const PORT = config.port;
 
 const startServer = async () => {
   // 1. Run pending migrations
@@ -138,7 +138,7 @@ const startServer = async () => {
   fs.mkdirSync(UPLOADS_DIR, { recursive: true });
 
   // 3. Start listening
-  server.listen(PORT, () => {
+  server.listen(PORT, '0.0.0.0', () => {
     logger.info(`Server running on port ${PORT}`, { env: process.env.NODE_ENV || 'development' });
   });
 };

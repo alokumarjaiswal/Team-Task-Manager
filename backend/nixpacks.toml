@@ -1,8 +1,8 @@
 [phases.setup]
-nixPkgs = ["nodejs_20"]
+nixPkgs = ["nodejs_24"]
 
 [phases.install]
-cmds = ["npm ci"]
+cmds = ["npm install"]
 
 [start]
 cmd = "npm run start:prod"

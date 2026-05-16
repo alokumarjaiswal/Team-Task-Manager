@@ -1,7 +1,9 @@
 'use strict';
 const { Umzug, SequelizeStorage } = require('umzug');
 const path = require('path');
-const { sync: globSync } = require('glob');
+const glob = require('glob');
+
+const globSync = glob.globSync || glob.sync;
 
 /**
  * Creates and returns an Umzug migration runner configured for the given
@@ -15,7 +17,7 @@ const { sync: globSync } = require('glob');
 function createMigrationRunner(sequelize) {
   // Use glob.sync with forward slashes for cross-platform compatibility
   const pattern = path.join(__dirname, '[0-9]*.js').replace(/\\/g, '/');
-  const migrationFiles = globSync(pattern);
+  const migrationFiles = globSync(pattern).sort();
 
   return new Umzug({
     migrations: migrationFiles.map((migPath) => ({

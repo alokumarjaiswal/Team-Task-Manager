@@ -1,8 +1,8 @@
 [phases.build]
-cmds = ["npm ci", "npm run build"]
+cmds = ["npm install", "npm run build"]
 
 [phases.setup]
-nixPkgs = ["nodejs_20"]
+nixPkgs = ["nodejs_24"]
 
 [start]
 cmd = "node serve.js"

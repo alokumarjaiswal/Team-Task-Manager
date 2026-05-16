@@ -8,7 +8,8 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(__dirname, 'dist');
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
+const HOST = '0.0.0.0';
 
 const MIME = {
   '.html': 'text/html',
@@ -50,6 +51,6 @@ http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': contentType });
     res.end(data);
   });
-}).listen(PORT, () => {
+}).listen(PORT, HOST, () => {
   console.log(`Frontend running on port ${PORT}`);
 });

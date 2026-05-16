@@ -1,6 +1,17 @@
 // Centralized configuration — single source of truth for all env vars
 // Fails fast if critical vars are missing in production
 
+const parseOrigins = (value) => {
+  if (!value) {
+    return ['*'];
+  }
+
+  return value
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+};
+
 const config = {
   env: process.env.NODE_ENV || 'development',
   port: parseInt(process.env.PORT, 10) || 5000,
@@ -21,7 +32,7 @@ const config = {
   },
 
   // CORS
-  frontendUrl: process.env.FRONTEND_URL || '*',
+  frontendUrl: parseOrigins(process.env.FRONTEND_URL),
 
   // Email
   smtp: {
@@ -37,7 +48,7 @@ const config = {
 
 // Validate critical vars in production
 if (config.env === 'production') {
-  const required = ['JWT_SECRET', 'FRONTEND_URL'];
+  const required = ['DATABASE_URL', 'JWT_SECRET', 'FRONTEND_URL'];
   const missing = required.filter(key => !process.env[key]);
   if (missing.length > 0) {
     throw new Error(`Missing required environment variables: ${missing.join(', ')}`);

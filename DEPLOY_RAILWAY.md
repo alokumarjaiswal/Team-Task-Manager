@@ -5,7 +5,7 @@ Prerequisites:
 - Ensure GitHub repo is connected to Railway (for auto-deploy) or use `railway up`.
 
 Overview:
-- We'll create one Railway project with three services: `postgres` (plugin), `backend` (Node API), and `frontend` (static Vite build served by `serve.js`).
+-- We'll create one Railway project with three services: `postgres` (plugin), `backend` (Node API), and `frontend` (static Vite build served by `serve.js`).
 
 1) Create project
 
@@ -35,7 +35,17 @@ railway up --detach --name backend
 # Ensure start command is: npm run start:prod
 ```
 
+- `DATABASE_URL` (automatically set if plugin linked)
+- `NODE_ENV=production`
+- `JWT_SECRET` (generate a secure value)
+- `FRONTEND_URL` = the frontend service URL (set after frontend creation)
+- Optional: `SMTP_HOST`, `SMTP_USER`, `SMTP_PASS`, `REDIS_URL`
 Set environment variables for backend in Railway (Project -> Services -> backend -> Variables):
+- `DATABASE_URL` (automatically set if plugin linked)
+- `NODE_ENV=production`
+- `JWT_SECRET` (generate a secure value)
+- `FRONTEND_URL` = the frontend service URL (set after frontend creation)
+- Optional: `SMTP_HOST`, `SMTP_USER`, `SMTP_PASS`, `REDIS_URL`
 - `DATABASE_URL` (automatically set if plugin linked)
 - `NODE_ENV=production`
 - `JWT_SECRET` (generate a secure value)
