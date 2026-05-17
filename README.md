@@ -51,7 +51,7 @@ Assumptions & limitations
 | Backend | Node.js, Express.js, Socket.IO, Sequelize ORM |
 | Database | SQLite (dev) / PostgreSQL (prod) |
 | Auth | JWT + bcrypt |
-| Deployment | Netlify (frontend) + Railway (backend) |
+| Deployment | Railway (backend) |
 
 ## Getting Started
 
