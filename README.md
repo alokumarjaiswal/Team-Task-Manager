@@ -42,7 +42,7 @@ Assumptions & limitations
 
 ## 🚀 Live Demo
 - **Frontend**: [https://team-task-manager-ethara.up.railway.app](https://team-task-manager-ethara.up.railway.app)
-- **Backend API**: [[https://backend-production-8c1c.up.railway.app](https://team-task-manager-ethara-backend.up.railway.app/)]([https://backend-production-8c1c.up.railway.app](https://team-task-manager-ethara-backend.up.railway.app/))
+- **Backend API**: [https://team-task-manager-ethara-backend.up.railway.app/](https://team-task-manager-ethara-backend.up.railway.app/)
 
 ## Tech Stack
 | Layer | Technology |
