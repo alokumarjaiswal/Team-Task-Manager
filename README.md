@@ -2,7 +2,7 @@
 # Team Task Manager — Quick Start
 
 Purpose
-- Minimal task/project manager (frontend + backend) with real-time updates made for Ethara's Internal Full-Stack Assessment.
+- Minimal task/project manager (frontend + backend) with real-time updates made for Ethara's Internal Full-Stack Assessment. I went with the GitHub's style to handle team and projects.
 
 Quick setup (dev)
 - Backend:
