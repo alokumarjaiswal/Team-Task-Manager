@@ -1,8 +1,44 @@
-# Team Task Manager
 
-A collaborative project & task management web application for teams.
+# Team Task Manager — Quick Start
 
-A Team Task Manager web app helps organize team work by providing a central platform to create projects, assign tasks, and track progress. It improves accountability by clearly defining who is responsible for each task. With role-based access, admins manage tasks while members focus on execution, ensuring control and security. Overall, it increases productivity and reduces confusion.
+Purpose
+- Minimal task/project manager (frontend + backend) with real-time updates made for Ethara's Internal Full-Stack Assessment.
+
+Quick setup (dev)
+- Backend:
+	- cd backend
+	- npm install
+	- create a `.env` (or set env vars): `DATABASE_URL`, `JWT_SECRET`
+	- run migrations: `npm run migrate`
+	- start: `npm start`
+- Frontend:
+	- cd frontend
+	- npm install
+	- set `VITE_API_URL` to the backend URL (e.g. http://localhost:3000)
+	- dev server: `npm run dev`
+
+Test accounts for quick login:
+- Admin: admin@test.com / Admin1234!
+- Member: member@test.com / Member1234!
+
+Architecture & config
+- Frontend: Vite + React. Uses `VITE_API_URL` at build/runtime. Start with `npm run dev`.
+- Backend: Express + Sequelize. Expects `DATABASE_URL` (Postgres) and `JWT_SECRET`.
+- Database: Postgres (or sqlite when `DATABASE_URL` is absent for local quick dev).
+
+Railway deployment notes
+- Services used: `Postgres`, `backend`, `frontend` (static build).
+- Railway wiring:
+	- `Postgres` provides `DATABASE_URL` to `backend` (internal) and `DATABASE_PUBLIC_URL` for external access.
+	- `backend` requires `DATABASE_URL`, `JWT_SECRET`, `NODE_ENV=production`, and `FRONTEND_URL`.
+	- `frontend` build should be configured with `VITE_API_URL` pointing at the backend public URL; set `FRONTEND_URL` to the deployed frontend domain.
+- Troubleshooting: Railway internal hostnames (e.g. `postgres.railway.internal`) resolve only inside Railway; use `DATABASE_PUBLIC_URL` for local scripts or external DB clients.
+
+Assumptions & limitations
+- Node 24 is targeted by the repo; use Node 24.x.
+- Uploads are stored in `backend/uploads` (ephemeral on containers). Use external object storage in production.
+- Demo seed scripts are idempotent but assume the two test users exist before seeding the demo project.
+- This README is intentionally compact; see `backend/scripts` for seed scripts and `DEPLOYMENT_RAILWAY.md` for full deployment steps.
 
 ## 🚀 Live Demo
 - **Frontend**: [https://team-task-manager-ethara.up.railway.app](https://team-task-manager-ethara.up.railway.app)
@@ -38,27 +74,6 @@ npm install
 npm run dev             # runs on http://localhost:5173
 ```
 
-## Project Structure
-```
-├── backend/
-│   ├── config/         # Centralized configuration
-│   ├── middleware/      # Auth, validation, rate limiting
-│   ├── models/         # Sequelize models (User, Project, Task, etc.)
-│   ├── routes/         # Express route handlers
-│   ├── utils/          # Email, logging utilities
-│   ├── server.js       # Application entry point
-│   └── Dockerfile      # Container configuration
-├── frontend/
-│   ├── src/
-│   │   ├── components/ # Reusable UI components
-│   │   ├── pages/      # Route-level page components
-│   │   ├── services/   # API abstraction layer
-│   │   ├── hooks/      # Custom React hooks
-│   │   └── config.js   # API URL configuration
-│   └── netlify.toml    # Netlify deployment config
-└── .github/workflows/  # CI/CD pipeline
-```
-
 ## Features
 - 🔐 JWT authentication with role-based access (Admin/Member)
 - 📋 Kanban-style task board with drag-and-drop
@@ -68,8 +83,6 @@ npm run dev             # runs on http://localhost:5173
 - 🔔 Real-time updates via WebSockets
 - 📧 Email notifications on task assignment
 
-## Author
-**Saswat Kumar Das** — [LinkedIn](https://www.linkedin.com/in/saswat-kumar-das-069a51187)
-
-## License
-All rights reserved © 2026
+With love, light and laughter!
+Alok Kumar Jaiswal
+Special thanks to [Saswat](https://www.linkedin.com/in/saswat-kumar-das-069a51187)!
